@@ -1,1 +1,2 @@
+information platform
 商场信息发布平台，用来展示商场店铺分布信息及打折优惠等信息
