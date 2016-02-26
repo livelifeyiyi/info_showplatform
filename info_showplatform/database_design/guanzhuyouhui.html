@@ -1,0 +1,301 @@
+
+
+
+
+<html>
+<head> 
+<title>无标题页</title> 
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8;application/json" /> 
+<style type="text/css"> 
+.show{ display:block;} 
+.hide{ display:none;} 
+</style> 
+<script  src="1.8.3_jquery.min.js"></script> 
+<script  src="json2.js"></script> 
+<script  src="cookie.js"></script>
+
+<script type="text/javascript"> 
+function make_base_auth(user, password) {
+    var tok = user + ':' + password;
+	
+    var hash = btoa(tok);
+    return 'Basic ' + hash;
+}
+
+
+
+
+$(document).ready(function(){
+	$("#guanzhuyouhui").click(function(){
+	
+
+	var uusername=getCookie("username");
+	var ppassword=getCookie("password");
+	var uuid;
+	var bbid="2";
+	
+
+	
+
+	$.ajaxSetup({ cache: false ,async:false });
+	var str="http://api.fanqiechaodan.info/isUser/?username=";
+	str=str+uusername+"&password="+ppassword;
+	//str+="%2F%3Fformat%3Djson&format=json";
+    str+="&format=json";
+
+	var oRequest = new XMLHttpRequest();
+	var sURL = str;
+       
+
+	
+	
+
+
+	$.ajax({ 
+		type:'GET',
+		url:str,
+	
+		
+		dataType:"json",
+		
+
+		beforeSend:function (e) {
+		
+		
+		
+		
+		e.setRequestHeader('Authorization ', make_base_auth(uusername, ppassword));
+		
+		
+		
+		} ,
+		success:function(data){
+			
+			
+				  
+		
+			
+		    
+		   	$.each(data,function(index,d){
+		   		if (index=="id"){
+		   			uuid=d;
+		   			
+		   			return ;
+		   		}
+				
+            });
+			
+			
+			
+
+		},
+
+		error:function(data){
+					alert("您尚未登录或注册！");
+			}
+			
+				  
+		
+			
+    });
+			
+			
+
+            
+            
+
+            
+
+	//var content=$("#write_comment2").val();
+		
+
+	//function myajax(){ 
+	//var obj=jsonData();
+	//var dataObject={"uid":uuid,
+	//	"bid":bbid,"content":content};
+	var dataObject={};
+
+	//var dataObject = {};
+    ///business/<bid>/follow
+	var str="http://api.fanqiechaodan.info/discount/";
+	str=str+bbid+"/follow";
+		
+	$.ajax({ 
+	type:'PUT', 
+	url:str,//"http://api.fanqiechaodan.info/users/",
+	data:JSON.stringify(dataObject),//jsonData(),//可以直接加一个函数名。 
+	contentType:"application/json;text/html;charset=utf-8",//"application/json",//dataType:'json', 
+	error:function(XMLHttpRequest, textStatus, errorThrown){  
+        alert(XMLHttpRequest.readyState + XMLHttpRequest.status + XMLHttpRequest.responseText);  
+    },
+	//beforeSend:beforecall,
+	beforeSend:function (e) {
+		
+		
+		
+		
+		e.setRequestHeader('Authorization', make_base_auth(uusername, ppassword));
+		
+		
+		
+		},
+		
+	success:function(result){//callback
+				
+	           alert("添加关注优惠信息成功！");
+	}
+
+	}); 
+					
+     
+	});
+
+
+	$("#quxiaoguanzhuyouhui").click(function(){
+	
+
+	var uusername=getCookie("username");
+	var ppassword=getCookie("password");
+	var uuid;
+	var bbid="2";
+	
+
+	
+
+	$.ajaxSetup({ cache: false ,async:false });
+	var str="http://api.fanqiechaodan.info/isUser/?username=";
+	str=str+uusername+"&password="+ppassword;
+	//str+="%2F%3Fformat%3Djson&format=json";
+    str+="&format=json";
+
+	var oRequest = new XMLHttpRequest();
+	var sURL = str;
+       
+
+	
+	
+
+
+	$.ajax({ 
+		type:'GET',
+		url:str,
+	
+		
+		dataType:"json",
+		
+
+		beforeSend:function (e) {
+		
+		
+		
+		
+		e.setRequestHeader('Authorization ', make_base_auth(uusername, ppassword));
+		
+		
+		
+		} ,
+		success:function(data){
+			
+			
+				  
+		
+			
+		    
+		   	$.each(data,function(index,d){
+		   		if (index=="id"){
+		   			uuid=d;
+		   			
+		   			return ;
+		   		}
+				
+            });
+			
+			
+			
+
+		},
+
+		error:function(data){
+					alert("您尚未登录或注册！");
+			}
+			
+				  
+		
+			
+    });
+			
+			
+
+            
+            
+
+            
+
+	//var content=$("#write_comment2").val();
+		
+
+	//function myajax(){ 
+	//var obj=jsonData();
+	//var dataObject={"uid":uuid,
+	//	"bid":bbid,"content":content};
+	var dataObject={};
+
+	//var dataObject = {};
+    ///business/<bid>/follow
+	var str="http://api.fanqiechaodan.info/discount/";
+	str=str+bbid+"/follow";
+		
+	$.ajax({ 
+	type:'DELETE', 
+	url:str,//"http://api.fanqiechaodan.info/users/",
+	data:JSON.stringify(dataObject),//jsonData(),//可以直接加一个函数名。 
+	contentType:"application/json;text/html;charset=utf-8",//"application/json",//dataType:'json', 
+	error:function(XMLHttpRequest, textStatus, errorThrown){  
+        alert(XMLHttpRequest.readyState + XMLHttpRequest.status + XMLHttpRequest.responseText);  
+    },
+	//beforeSend:beforecall,
+	beforeSend:function (e) {
+		
+		
+		
+		
+		e.setRequestHeader('Authorization', make_base_auth(uusername, ppassword));
+		
+		
+		
+		},
+		
+	success:function(result){//callback
+				
+	           alert("取消关注优惠信息成功！");
+	}
+
+	}); 
+					
+     
+	}); 	
+
+
+}); 
+        
+
+
+
+</script> 
+</head> 
+<body onLoad="checkCookie()"> 
+
+<button id="guanzhuyouhui" type="button">添加关注优惠</button>    
+<button id="quxiaoguanzhuyouhui" type="button">取消关注优惠</button>  
+<div id="391"></div>
+
+
+
+
+
+
+   
+
+</body> 
+</html>

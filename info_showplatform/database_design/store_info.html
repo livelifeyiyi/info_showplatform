@@ -1,0 +1,168 @@
+
+
+
+<!--<html xmlns="http://www.w3.org/1999/xhtml" > -->
+<html>
+<head> 
+<title>无标题页</title> 
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8;application/json" /> 
+<style type="text/css"> 
+.show{ display:block;} 
+.hide{ display:none;} 
+</style> 
+<script  src="1.8.3_jquery.min.js"></script> 
+<script  src="json2.js"></script> 
+
+<script type="text/javascript"> 
+
+//这个方法把ajax方法封装一下，方便调用。 
+
+function find(list1)
+{
+	for (each in list1)
+	{
+		if (each=="types")
+		{
+			if (list1[each]==0)
+				return 1
+			else 
+				return 0
+		}
+
+
+	}
+}
+$(document).ready(function(){
+
+
+	//$("#register").click(function(){
+	//function myajax(){ 
+	//var obj=jsonData();
+	$.ajaxSetup({ cache: false });
+	var str="http://api.fanqiechaodan.info/businesses/";
+	
+        
+
+    $.getJSON(str, function(data){ 
+    		var html = [];
+    		
+           
+		   html.push("<div>");
+		   var flag=0;
+		   var fflag=1;
+
+            /* loop through array */
+
+            $.each(data, function(index, d){
+            	flag=find(data[index]);
+            		if (flag==0){
+            			
+            			return ;
+            		}
+
+				html.push("<div class=\"container\">");
+				html.push("<div class=\"row\">","</div","<br>");
+            	$.each(data[index],function(index2,d2){
+            		
+
+            		
+            		
+	            	if  (index2=="url")
+	            	{
+	           			html.push("<a href=",d2,">");
+	           			html.push("detail info");
+	           			html.push("</a>","<br/>");
+	           			return;
+	           			
+	       				
+
+	            				
+	      			}//||(index=="id"))
+	          
+	      			if ( (index2=="id")||(index2=="types") )
+	           			return;
+	      			if (index2=="logo")
+	      			{
+	      				html.push("<img src=",d2,"/>","<br/>");
+	      				return;
+	      				
+	      				
+	      			}
+
+	      			html.push("<div id=",id,">");
+	      			
+            	            
+				
+                	html.push(index2,":",d2,"<br/>");
+				
+          
+					html.push("</div>");
+	      			
+	            		
+                
+				
+ 	            });
+ 	            html.push("</div>");
+			
+            });
+			
+			//html.push("</div>");
+
+            //alert("success occurred!");
+            
+
+            $("#391").append(html.join(''));//.css("background-color", "white");
+        }).error(function(jqXHR, textStatus, errorThrown){ /* assign handler */
+            /* alert(jqXHR.responseText) */
+    alert("error occurred!");});
+	
+	
+});
+//封装json数据，为了代码清晰 
+/*function jsonData(){ 
+/*var jsonStr="({"; 
+jsonStr+="\"name\":"; 
+jsonStr+="\"tree\""; 
+jsonStr+=","; 
+jsonStr+="\"id\":"; 
+jsonStr+="\"123\""; 
+jsonStr+="})"; 
+var jsonStr={
+	"name":"hsy",
+	"password":123,
+	"email":"www.126.com", 
+	"first_name":"Huang", 
+	"last_name": "Suyun",
+}
+return eval(jsonStr);//关键在于转换。 
+} */
+//调用前方法,不成功 
+//function beforecall(){ 
+//$('#wait').addClass("show").append('调出中...'); 
+//alert('');//测试是否调用 
+//} 
+//回调函数 
+//function callback(data){ 
+//$('#response').append(data.name+data.id); 
+//$('#wait').css("display","none"); 
+//} 
+//onload()事件 
+//$(function(){ 
+//$('#confirm').click(myajax); 
+//}) 
+</script> 
+</head> 
+<body > 
+<!--<div input type="button" id="confirm"></div>  -->
+<div id="id"></div>
+<div id="391"></div>
+
+
+
+
+   
+
+</body> 
+</html>
+<!--username, email, first_name, last_name, password， &nbsp; -->

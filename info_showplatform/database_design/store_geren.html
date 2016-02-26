@@ -1,0 +1,188 @@
+
+
+
+
+<html>
+<head> 
+<title>无标题页</title> 
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8;application/json" /> 
+<style type="text/css"> 
+.show{ display:block;} 
+.hide{ display:none;} 
+</style> 
+<script  src="1.8.3_jquery.min.js"></script> 
+<script  src="json2.js"></script> 
+<script  src="cookie.js"></script>
+<script type="text/javascript"> 
+function make_base_auth(user, password) {
+    var tok = user + ':' + password;
+	
+    var hash = btoa(tok);
+    return 'Basic ' + hash;
+}
+
+
+
+
+$(document).ready(function(){
+	//$("#store_geren").click(function(){
+
+	var id="1";
+
+
+	
+	
+
+
+	$.ajaxSetup({ cache: false ,async:false });
+	var str="http://api.fanqiechaodan.info/business/";
+	str=str+id;
+	//str+="%2F%3Fformat%3Djson&format=json";
+    //str+="&format=json";
+
+	
+       
+
+	
+	
+
+
+	$.ajax({ 
+		type:'GET',
+		url:str,
+	
+		
+		dataType:"json",
+		
+        /*
+		
+		success:function(data){
+			
+			
+				  
+		
+			var html = [];
+    		
+           
+		    html.push("<div id=");
+		    html.push(id,"<br/>");
+		
+		   	$.each(data,function(index,d){
+		   		if ( (index=="url")||(index=="id")||(index=="types")||(index=="followers")
+		   			
+		   			return ;
+
+				html.push("<div id=");
+				html.push(index,">");            	            
+				
+                html.push(index,":",d,"<br/>");
+				
+          
+				html.push("</div>");
+            });
+			
+			html.push("</div>");
+
+            
+            
+
+            $("#391").append(html.join('')).css("background-color", "white");
+			
+
+		},
+        */
+				success:function(data){
+			
+			
+				  
+		
+			var html = [];
+    		
+           
+		    html.push("<div id=\"all\"");
+		    
+		   	$.each(data,function(index,d){
+		   		if ( (index=="url")||(index=="id"))
+		   			
+		   			return ;
+		   		if (index=="logo")
+	      		{
+	      			html.push("<img src=",d,"/>","<br/>");
+	      			return;
+	      				
+	      				
+	      		}
+
+	            if  (index=="discounts")
+	           	{
+	       			html.push("<a href='",d,"'>");
+	       			html.push("discounts info");
+	       			html.push("</a>","<br/>");
+	           		return;
+	           			
+	       				
+
+	            				
+      			}//||(index=="id"))
+
+		   	    if  (index=="comments")
+	           	{
+	           		//alert(d);
+	       			html.push("<a href='",d,"'>");
+	       			//html.push("");
+	       			html.push("comments info");
+	       			html.push("</a>","<br/>");
+	           		return;
+	           			
+	       				
+
+	            				
+      			}//||(index=="id"))
+				html.push("<div id=index>");
+            	            
+				
+                html.push(index,":",d,"<br/>");
+				
+          
+				html.push("</div>");
+            });
+			
+			html.push("</div>");
+
+            
+            
+
+            $("#391").append(html.join('')).css("background-color", "white");
+			
+
+		},
+		error:function(XMLHttpRequest, textStatus, errorThrown){  
+			alert(XMLHttpRequest.readyState + XMLHttpRequest.status + XMLHttpRequest.responseText);  
+		}
+					
+     
+		
+		}); 
+        
+
+});
+
+//});
+
+</script> 
+</head> 
+<body >   <!--onLoad="checkCookie()"-->
+
+<div id="391"></div>
+<!--<button id="store_geren" type="button">店铺信息</button>    -->
+  
+
+
+
+
+
+   
+
+</body> 
+</html>

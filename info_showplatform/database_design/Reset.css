@@ -1,0 +1,54 @@
+/* Reset */
+html{color:#111;background:#F0F0F0;-webkit-text-size-adjust:none;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td
+{margin:0;padding:0;}
+table{border-collapse:collapse;border-spacing:0;}
+fieldset,img{border:0;}
+address,caption,cite,code,dfn,em,strong,th,var,optgroup{font-style:inherit;}
+del,ins{text-decoration:none;}
+li{list-style:none;}
+caption,th{text-align:left;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
+q:before,q:after{content:'';}
+abbr,acronym{border:0;font-variant:normal;}
+/*sup,sub{vertical-align:baseline;}*/
+/* because legend doesn't inherit in IE */
+legend{color:#111;}
+input,button,textarea,select,optgroup,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;}
+input,select{vertical-align:middle;}
+cite,em{font-style:normal}
+
+/* New Clearfix */
+.clear{clear:both;height:1px;margin:0;padding:0;font-size:15px;line-height:1px;}
+.clearfix:after,.content:after{visibility:hidden;display: block;font-size:0;content:" ";clear: both;height:0;}
+* html .clearfix,* html .content{zoom:1;}/* IE6 */
+*:first-child+html .clearfix,*:first-child+html .content{zoom:1;}/* IE7 */
+_html{filter:expression(document.execCommand("BackgroundImageCache", false, true));}
+
+/* Defaults */
+a:link,a:visited{text-decoration:none;color:#111;
+		-webkit-transition:color 0.4s ease-in-out; 
+		-moz-transition:color 0.4s ease-in-out; 
+		-o-transition:color 0.4s ease-in-out; 
+		-ms-transition:color 0.4s ease-in-out; 
+		transition:color 0.4s ease-in-out;
+}
+a:hover{text-decoration:none; color:#F60;}
+		
+body{color:#333;font:normal 12px Arial,Corbel,Verdana,Helvetica,sans-serif;}
+img{border:0;vertical-align:bottom}
+fieldset{border:0}
+h1, h2, h3, h4, h5, h6{font-size:1em;}
+p{margin:0 0 1em}
+h3{font:bold 12px Baskerville, Times New Roman, Serif;}
+.left{float:left;}
+.right{float:right}
+.tleft{text-align:left}
+.tright{text-align:right}
+.tcenter{text-align:center}
+.gary{color:#999}
+.msyahei{font-family:Microsoft YaHei,Verdana;}
+.display_none{display:none;}
+.overflow_hidden{overflow:hidden;}
+.ab_hidden_text{overflow:hidden; text-indent:-9999px; position:absolute;}
+.space{background:url(picture/space.gif); z-index:100;}

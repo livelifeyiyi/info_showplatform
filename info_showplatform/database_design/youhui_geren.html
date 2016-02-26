@@ -1,0 +1,109 @@
+
+
+
+
+<html>
+<head> 
+<title>无标题页</title> 
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8;application/json" /> 
+<style type="text/css"> 
+.show{ display:block;} 
+.hide{ display:none;} 
+</style> 
+<script  src="1.8.3_jquery.min.js"></script> 
+<script  src="json2.js"></script> 
+<script  src="cookie.js"></script>
+<script type="text/javascript"> 
+function make_base_auth(user, password) {
+    var tok = user + ':' + password;
+	
+    var hash = btoa(tok);
+    return 'Basic ' + hash;
+}
+
+
+
+
+$(document).ready(function(){
+	
+
+	var bid="1";
+
+	$.ajaxSetup({ cache: false ,async:false });
+	var str="http://api.fanqiechaodan.info/business/";
+	str=str+bid+"/discounts";
+
+
+	$.ajax({ 
+		type:'GET',
+		url:str,
+	
+		
+		dataType:"json",
+       
+				success:function(data){
+		
+			var html = [];
+    		
+           
+		    html.push("<div id=\"all\"");
+		    
+		   	$.each(data,function(index,d){
+		   		html.push("<div id=\"all\"");
+		   		$.each(data[index],function(index,d){
+		   		if ( (index=="url")||(index=="id")||(index=="business")||(index=="owner")||(index=="enable"))
+		   			
+		   			return ;
+		   		
+
+	            
+				html.push("<div id=index>");
+            	            
+				
+                html.push(index,":",d,"<br/>");
+				
+          
+				html.push("</div>");
+            });
+		   		html.push("</div>","<br/>");
+		   		});
+			
+			html.push("</div>");
+
+            
+            
+
+            $("#391").append(html.join(''));
+			
+
+		},
+		error:function(XMLHttpRequest, textStatus, errorThrown){  
+			alert(XMLHttpRequest.readyState + XMLHttpRequest.status + XMLHttpRequest.responseText);  
+		}
+					
+     
+		
+		}); 
+        
+
+
+
+});
+
+</script> 
+</head> 
+<body >   <!--onLoad="checkCookie()"-->
+
+<div id="391"></div>
+
+  
+
+
+
+
+
+   
+
+</body> 
+</html>

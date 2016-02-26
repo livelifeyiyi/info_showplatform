@@ -1,0 +1,468 @@
+
+<!DOCTYPE html>
+ <html class="no-js" lang="it-IT">
+<head>
+  <meta charset="utf-8">
+  <title>gouwudian2detail </title>
+  <!-- -->
+  <!--<meta name="description" content="Dal 1893 il marchio Cecchi è sinonimo di viticoltura in Italia e nel mondo" />-->
+
+  <link rel="stylesheet" href="styles2.css">
+
+  
+  <meta name='robots' content='index,follow' />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="p:domain_verify" content="0f63e2d407941043d41843060b1f0687"/>
+  <script src="min.js"></script>
+  
+  
+  
+  <script src="min2.js"></script>
+ <!-- <script>window.jQuery || document.write('<script src="http://cecchi.net/wp-content/themes/cecchi/assets/js/vendor/jquery-1.8.2.min.js"><\/script>')</script>-->
+  <script type="text/javascript">
+  jQuery(window).load(function (intro_cecchi){
+    jQuery('#intro').css({'height':((jQuery(window).height()))-'120'+'px'});
+  });
+</script>
+
+  <script type="text/javascript">
+  jQuery(window).load(function() {
+    //show();
+  });
+  
+  function show() {
+    jQuery('#loading').hide();
+    jQuery('.home #intro,.home .content').fadeIn();
+  };
+  
+  setTimeout(show, 9000);
+  </script>  
+
+  <link rel="stylesheet" href="bootstrap.css">
+  <!--<link rel="stylesheet" href="responsive.css">-->
+  <!--<link rel="stylesheet" href="app.css">-->
+  <link rel="stylesheet" href="custom.css">
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8;application/json" /> 
+<style type="text/css"> 
+h2{color: white}
+.show{ display:block;} 
+.hide{ display:none;} 
+</style> 
+<script  src="1.8.3_jquery.min.js"></script> 
+<script  src="json2.js"></script> 
+<script  src="cookie.js"></script>
+<script type="text/javascript"> 
+function make_base_auth(user, password) {
+    var tok = user + ':' + password;
+  
+    var hash = btoa(tok);
+    return 'Basic ' + hash;
+}
+
+
+
+
+$(document).ready(function(){
+  //$("#store_geren").click(function(){
+
+  var id="2";
+
+  $.ajaxSetup({ cache: false ,async:false });
+  var str="http://api.fanqiechaodan.info/business/";
+  str=str+id;
+  //str+="%2F%3Fformat%3Djson&format=json";
+    //str+="&format=json";
+
+  
+       
+
+  
+  
+
+
+  $.ajax({ 
+    type:'GET',
+    url:str,
+  
+    
+    dataType:"json",
+    
+        success:function(data){
+      
+      
+          
+    
+      var html = [];
+        
+           
+        html.push("<div id=\"all\"");
+        
+        $.each(data,function(index,d){
+          if ( (index=="url")||(index=="id")||(index=="followers"))
+           {
+             return ;
+           }
+           html.push("<div id=index>");
+          if (index=="name")
+          {
+            html.push("店铺名称");
+             html.push(":",d);
+             html.push("<br/>")
+          }
+          if (index=="address")
+          {
+            html.push("店铺地址");
+             html.push(":",d);
+             html.push("<br/>")
+          }
+          if (index=="info")
+          {
+            html.push("店铺信息");
+             html.push(":",d);
+             html.push("<br/>")
+          }
+
+          if (index=="logo")
+            {
+              //html.push("<img src=",d,"/>","<br/>");
+              //return;
+                var d="http://api.fanqiechaodan.info"+d;
+                html.push("<img src=",d,">","<br/>");
+                return;   
+            }
+          if (index=="types")
+          {
+            html.push("店铺类型");
+             html.push(":");
+             if(d=="1")
+            {
+              html.push("购物类");
+            }
+             html.push("<br/>");
+          }  
+
+
+              if  (index=="discounts")
+              {
+                var str="./gouwudian";
+                str+=id;
+                str+="discount.html";
+               // html.push("<h2>");
+                html.push("<a href='",str,"'>");
+            
+               
+                html.push("优惠信息");
+                html.push("</a>");
+               // html.push("</h2>");
+                return;
+                
+            }//||(index=="id"))
+            if  (index=="comments")
+              {
+                //alert(d);
+                var str1="./gouwudian";
+                str1+=id;
+                str1+="comment.html";
+              html.push("<a href='",str1,"'>");
+              //html.push("");
+              html.push("店铺评论");
+              html.push("</a>");
+                return;
+                     
+            }//||(index=="id"))
+       
+        
+          
+        html.push("</div>");
+            });
+      
+      html.push("</div>");
+
+            
+            
+
+            $("#391").append(html.join(''));
+      
+
+    },
+    error:function(XMLHttpRequest, textStatus, errorThrown){  
+      alert(XMLHttpRequest.readyState + XMLHttpRequest.status + XMLHttpRequest.responseText);  
+    }
+          
+     
+    
+    }); 
+
+
+
+
+
+    $("#guanzhudianpu").click(function(){
+  
+
+  var uusername=getCookie("username");
+  var ppassword=getCookie("password");
+  var uuid;
+  var bbid="2";
+  
+
+  
+
+  $.ajaxSetup({ cache: false ,async:false });
+  var str="http://api.fanqiechaodan.info/isUser/?username=";
+  str=str+uusername+"&password="+ppassword;
+  //str+="%2F%3Fformat%3Djson&format=json";
+    str+="&format=json";
+
+  var oRequest = new XMLHttpRequest();
+  var sURL = str;
+
+  $.ajax({ 
+    type:'GET',
+    url:str,
+  
+    
+    dataType:"json",
+    
+
+    beforeSend:function (e) {
+    
+    
+    e.setRequestHeader('Authorization ', make_base_auth(uusername, ppassword));
+    
+    
+    
+    } ,
+    success:function(data){
+      
+      
+          
+    
+      
+        
+        $.each(data,function(index,d){
+          if (index=="id"){
+            uuid=d;
+            
+            return ;
+          }
+        
+            });
+      
+      
+      
+
+    },
+
+    error:function(data){
+          alert("您尚未登录或注册！");
+      }
+    
+    });
+      
+  //var content=$("#write_comment2").val();
+    
+
+  //function myajax(){ 
+  //var obj=jsonData();
+  //var dataObject={"uid":uuid,
+  //  "bid":bbid,"content":content};
+  var dataObject={};
+
+  //var dataObject = {};
+    ///business/<bid>/follow
+  var str="http://api.fanqiechaodan.info/business/";
+  str=str+bbid+"/follow";
+    
+  $.ajax({ 
+  type:'PUT', 
+  url:str,//"http://api.fanqiechaodan.info/users/",
+  data:JSON.stringify(dataObject),//jsonData(),//可以直接加一个函数名。 
+  contentType:"application/json;text/html;charset=utf-8",//"application/json",//dataType:'json', 
+  error:function(XMLHttpRequest, textStatus, errorThrown){  
+        alert(XMLHttpRequest.readyState + XMLHttpRequest.status + XMLHttpRequest.responseText);  
+    },
+  //beforeSend:beforecall,
+  beforeSend:function (e) {
+    
+    e.setRequestHeader('Authorization', make_base_auth(uusername, ppassword));
+    
+    
+    
+    },
+    
+  success:function(result){//callback
+        
+             alert("添加关注店铺成功！");
+  }
+
+  }); 
+          
+     
+  });
+
+
+  $("#quxiaoguanzhu").click(function(){
+  
+
+  var uusername=getCookie("username");
+  var ppassword=getCookie("password");
+  var uuid;
+  var bbid="2";
+
+  $.ajaxSetup({ cache: false ,async:false });
+  var str="http://api.fanqiechaodan.info/isUser/?username=";
+  str=str+uusername+"&password="+ppassword;
+  //str+="%2F%3Fformat%3Djson&format=json";
+    str+="&format=json";
+
+  var oRequest = new XMLHttpRequest();
+  var sURL = str;
+  $.ajax({ 
+    type:'GET',
+    url:str,
+    
+    dataType:"json",
+
+    beforeSend:function (e) {   
+    e.setRequestHeader('Authorization ', make_base_auth(uusername, ppassword));   
+    } ,
+    success:function(data){
+        
+        $.each(data,function(index,d){
+          if (index=="id"){
+            uuid=d;
+            
+            return ;
+          }
+        
+            });
+    },
+
+    error:function(data){
+          alert("您尚未登录或注册！");
+      }     
+    });       
+
+  //var content=$("#write_comment2").val();
+    
+
+  //function myajax(){ 
+  //var obj=jsonData();
+  //var dataObject={"uid":uuid,
+  //  "bid":bbid,"content":content};
+  var dataObject={};
+
+  //var dataObject = {};
+    ///business/<bid>/follow
+  var str="http://api.fanqiechaodan.info/business/";
+  str=str+bbid+"/follow";
+    
+  $.ajax({ 
+  type:'DELETE', 
+  url:str,//"http://api.fanqiechaodan.info/users/",
+  data:JSON.stringify(dataObject),//jsonData(),//可以直接加一个函数名。 
+  contentType:"application/json;text/html;charset=utf-8",//"application/json",//dataType:'json', 
+  error:function(XMLHttpRequest, textStatus, errorThrown){  
+        alert(XMLHttpRequest.readyState + XMLHttpRequest.status + XMLHttpRequest.responseText);  
+    },
+  //beforeSend:beforecall,
+  beforeSend:function (e) {
+    
+    
+    
+    
+    e.setRequestHeader('Authorization', make_base_auth(uusername, ppassword));
+    
+    
+    
+    },
+    
+  success:function(result){//callback
+        
+             alert("取消关注成功！");
+  }
+
+  }); 
+          
+     
+  });   
+        
+
+});
+
+//});
+
+</script> 
+
+
+
+
+
+
+</head>
+<body class="home page page-template page-template-cecchi-home-php top-navbar cecchi site-id-3" onload=checkcookie()> 
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=123417721076829";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<header>
+<div class='links-section section1'>
+
+
+<div class='container'>
+
+<div class='copyright'>
+<p><big>Established 2013.12 in <a href="http://www.tongji.edu.cn/" title="Welcome to tongji!">tju</a> by sudo.</big></p>
+</div>
+</div>
+
+
+</div>
+</header>
+<br>
+<!-- HEADER HOME -->
+<div id="intro" style="background-image: url('./picture/gouwu1.jpg');">
+  <div class="bg1"></div>
+  <div class="push-top">
+<button id="guanzhudianpu" type="button">添加关注店铺</button>    
+<button id="quxiaoguanzhu" type="button">取消关注店铺</button> 
+   <a href="./home.html"><p style="color:#FFFFFF;float:right">&nbsp;&nbsp;&nbsp;&gt;&nbsp;&gt;&nbsp;返回主页&nbsp;&nbsp;&nbsp;</p></a>
+   <a href="./workgouwu.html" ><p style="color:#FFFFFF;float:right">&gt;&nbsp;&gt;&nbsp;查看购物所有店铺</p></a>
+  </div>
+  <div id="myCarousel" class="carousel slide row-fluid">
+    <div class="arrow span2"><a class="carousel-control left" href="#myCarousel" data-slide="prev"><img src="" width="74" height="147"></a></div>
+    <div class="containter-fluid carousel-inner boxes span8">
+    <div class="active item slide1">
+      
+      <h2><div id="391"></div></h2>
+ 
+</div>
+</div>
+</div>
+</div>
+<footer>
+<div class='links-section section1'>
+
+
+<div class='container'>
+
+<div class='copyright'>
+<p><big>Established 2013.12 in <a href="http://www.tongji.edu.cn/" title="Welcome to tongji!">tju</a> by sudo.</big></p>
+</div>
+</div>
+
+
+</div>
+</footer>
+
+</body>
+</html>

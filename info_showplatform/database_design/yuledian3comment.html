@@ -1,0 +1,388 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8;application/json" /> 
+
+<meta name="description" content=""/>
+<meta name="keywords" content="" />
+<meta name="author" content="" />
+
+<link rel="stylesheet" type="text/css" href="reset1.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="style1.css" media="screen" />
+<!--[if lte IE 7]><link rel="stylesheet" type="text/css" href="ie_fixes.css" media="screen" /><![endif]-->
+
+<title>yuledian3comment</title>
+
+<script  src="1.8.3_jquery.min.js"></script> 
+<script  src="json2.js"></script> 
+<script  src="cookie.js"></script>
+<script type="text/javascript"> 
+function make_base_auth(user, password) {
+    var tok = user + ':' + password;
+    //alert(user,password);
+	
+    var hash = btoa(tok);
+    return 'Basic ' + hash;
+}
+
+
+
+
+$(document).ready(function(){
+	var bbid="3";
+	//$("#check_comment").click(function(){
+		$("#391").empty();
+
+	var uusername=getCookie("username");
+	var ppassword=getCookie("password");
+	var uuid;
+	
+
+	
+
+	//var bbid="2";
+
+
+	
+	
+
+
+	$.ajaxSetup({ cache: false ,async:false });
+	var str="http://api.fanqiechaodan.info/business/";
+	str=str+bbid+"/comments";
+	//str+="%2F%3Fformat%3Djson&format=json";
+    //str+="?format=json";
+       
+
+	
+	
+
+
+	$.ajax({ 
+		type:'GET',
+		url:str,
+	
+		
+		//dataType:"text/html;charset=utf-8",
+		
+
+		
+		success:function(data){
+		
+			var html = [];
+            
+		    html.push("<div id=\"all\"");		    
+		   	$.each(data,function(index,d){
+		   		$.each(data[index],function(index,d){
+		   		html.push("<div id=\"container\"");
+		   		if ( (index=="url")||(index=="id")||((index=="business")))
+		   			
+		   			return ;
+	            
+				html.push("<div id=index>");
+            	            
+				
+                html.push(index,":",d,"<br/>");
+				
+          
+				html.push("</div>");
+            });
+               html.push("</div>","<br/>");
+           });
+			
+			html.push("</div>");
+
+            
+            
+
+            $("#391").append(html.join(''));
+		},
+
+		
+
+
+
+		error:function(XMLHttpRequest, textStatus, errorThrown){  
+			alert(XMLHttpRequest.readyState + ":"+XMLHttpRequest.status + ":"+XMLHttpRequest.responseText);
+
+			} 
+
+			//alert()
+           /*
+			var data=XMLHttpRequest.responseText;
+			var html = [];
+    		
+           
+		    html.push("<div id=\"all\"");
+		    
+		   	$.each(data,function(index,d){
+		   		$.each(data[index],function(index,d){
+		   		html.push("<div id=\"container\"");
+		   		if ( (index=="url")||(index=="id")||((index=="business")))
+		   			
+		   			return ;
+		   		
+
+	            
+				html.push("<div id=index>");
+            	            
+				
+                html.push(index,":",d,"<br/>");
+				
+          
+				html.push("</div>");
+            });
+               html.push("</div>");
+           });
+			
+			html.push("</div>");
+
+            
+            
+
+            $("#391").append(html.join(''));
+		}
+
+		*/
+					
+     
+		
+		}); 
+        
+
+	
+	
+
+
+
+
+	$("#write_comment").click(function(){
+
+
+	var uusername=getCookie("username");
+	var ppassword=getCookie("password");
+	var uuid;
+	var flag=0;
+	//var bbid=1;
+
+	
+
+	$.ajaxSetup({ cache: false ,async:false });
+	var str="http://api.fanqiechaodan.info/isUser/?username=";
+	str=str+uusername+"&password="+ppassword;
+	str+="&format=json";
+	
+
+
+	
+
+	
+	
+
+
+	$.ajax({ 
+		type:'GET',
+		url:str,
+	
+		
+		//dataType:"json;charset=utf-8",
+		
+
+		beforeSend:function (e) {
+		
+		
+		
+		
+		e.setRequestHeader('Authorization', make_base_auth(uusername, ppassword));
+		
+		
+		
+		} ,
+
+		success:function(data){
+			
+			
+			
+				  
+		
+			
+		   	$.each(data,function(index,d){
+		   		if (index=="id") 
+				{
+				uuid=d
+				//alert(uuid)
+				}
+            });
+
+
+			
+			
+			
+
+		},
+
+
+		
+			error:function(XMLHttpRequest, textStatus, errorThrown)
+			{  
+			alert(XMLHttpRequest.readyState + XMLHttpRequest.status + XMLHttpRequest.responseText);
+		     }
+		
+					
+     
+		
+	});
+
+
+		
+	var content=$("#write_comment2").val();
+		
+
+	//function myajax(){ 
+	//var obj=jsonData();
+	//var dataObject={"uid":uuid,
+	//	"bid":bbid,"content":content};
+	var dataObject={"content":content};
+
+	//var dataObject = {};
+
+	var str="http://api.fanqiechaodan.info/business/";
+	str=str+bbid+"/comments";
+		
+	$.ajax({ 
+	type:'PUT', 
+	url:str,//"http://api.fanqiechaodan.info/users/",
+	data:JSON.stringify(dataObject),//jsonData(),//可以直接加一个函数名。 
+	contentType:"application/json;text/html;charset=utf-8",//"application/json",//dataType:'json', 
+	error:function(XMLHttpRequest, textStatus, errorThrown){  
+        alert(XMLHttpRequest.readyState + XMLHttpRequest.status + XMLHttpRequest.responseText);  
+    },
+	//beforeSend:beforecall,
+	beforeSend:function (e) {
+		
+		
+		
+		
+		e.setRequestHeader('Authorization', make_base_auth(uusername, ppassword));
+		
+		
+		
+		},
+		
+	success:function(result){//callback
+				
+	           alert("添加评论成功！");
+	}
+
+	}); 
+
+	});
+
+
+
+
+
+})
+
+</script> 
+</head>
+
+<body onLoad="checkCookie()">
+<!--<div style="width:728px;height:90px;margin:0 auto;"><script src="http://www.cssmoban.com/include/new/ggad_728x90.js"></script></div>
+-->
+
+<div id="paper_left">
+<div id="paper_right">
+<div id="layout_wrapper">
+	<a href="./home.html" ><h2>&gt;&nbsp;&gt;&nbsp;返回主页</h2></a>
+<div id="layout_container">
+<div id="layout_content">
+
+	<div id="site_title">
+		<h1><a >全部评论</a></h1>
+		<h2>~~~~~~~~~~</h2>
+	</div>
+
+	<div id="header_image">
+		<img src="./picture/1.jpg">
+	</div>
+
+	
+
+<!-- Note: Uncomment this section to display subnavigation
+
+	<div class="clearer">&nbsp;</div>
+
+	<div class="navigation" id="subnav">
+
+		<ul>
+			<li><a href="#">Subnav item 1</a></li>
+			<li><a href="#">Subnav item 2</a></li>
+			<li><a href="#">Subnav item 3</a></li>
+		</ul>
+
+		<div class="clearer">&nbsp;</div>
+
+	</div>
+-->
+
+	<div id="main">
+		
+		<div class="post">
+
+			
+
+			<div class="post_body" id="391">
+
+				
+
+				
+
+		
+				
+				
+
+				
+			</div>
+
+			
+
+		</div>
+
+	
+		
+			<div class="post_metadata">
+				<div class="content">
+					<span class="comment"><a >添加评论</a></span>
+				</div>
+			</div>
+
+
+
+<textarea rows="5" cols="100" id="write_comment2">
+~~~~~
+</textarea>
+
+<button id="write_comment" type="button">提交</button>
+		
+
+		</div>
+
+	</div>
+
+	
+
+	
+
+	</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</body>
+</html>

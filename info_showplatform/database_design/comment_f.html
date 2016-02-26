@@ -1,0 +1,306 @@
+
+
+
+
+<html>
+<head> 
+<title>无标题页</title> 
+
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8;application/json" /> 
+<style type="text/css"> 
+.show{ display:block;} 
+.hide{ display:none;} 
+</style> 
+<script  src="1.8.3_jquery.min.js"></script> 
+<script  src="json2.js"></script> 
+<script  src="cookie.js"></script>
+<script type="text/javascript"> 
+function make_base_auth(user, password) {
+    var tok = user + ':' + password;
+    //alert(user,password);
+	
+    var hash = btoa(tok);
+    return 'Basic ' + hash;
+}
+
+
+
+
+$(document).ready(function(){
+	var bbid="2";
+	$("#check_comment").click(function(){
+		$("#391").empty();
+
+	var uusername=getCookie("username");
+	var ppassword=getCookie("password");
+	var uuid;
+	
+
+	
+
+	//var bbid="2";
+
+
+	
+	
+
+
+	$.ajaxSetup({ cache: false ,async:false });
+	var str="http://api.fanqiechaodan.info/business/";
+	str=str+bbid+"/comments";
+	//str+="%2F%3Fformat%3Djson&format=json";
+    //str+="?format=json";
+       
+
+	
+	
+
+
+	$.ajax({ 
+		type:'GET',
+		url:str,
+	
+		
+		//dataType:"text/html;charset=utf-8",
+		
+
+		
+		success:function(data){
+			
+			
+				  
+		
+			
+			var html = [];
+    		
+           
+		    html.push("<div id=\"all\"");
+		    
+		   	$.each(data,function(index,d){
+		   		$.each(data[index],function(index,d){
+		   		html.push("<div id=\"container\"");
+		   		if ( (index=="url")||(index=="id")||((index=="business")))
+		   			
+		   			return ;
+		   		
+
+	            
+				html.push("<div id=index>");
+            	            
+				
+                html.push(index,":",d,"<br/>");
+				
+          
+				html.push("</div>");
+            });
+               html.push("</div>","<br/>");
+           });
+			
+			html.push("</div>");
+
+            
+            
+
+            $("#391").append(html.join(''));
+		},
+
+		
+
+
+
+		error:function(XMLHttpRequest, textStatus, errorThrown){  
+			alert(XMLHttpRequest.readyState + ":"+XMLHttpRequest.status + ":"+XMLHttpRequest.responseText); 
+
+			//alert()
+
+			var data=XMLHttpRequest.responseText;
+			var html = [];
+    		
+           
+		    html.push("<div id=\"all\"");
+		    
+		   	$.each(data,function(index,d){
+		   		$.each(data[index],function(index,d){
+		   		html.push("<div id=\"container\"");
+		   		if ( (index=="url")||(index=="id")||((index=="business")))
+		   			
+		   			return ;
+		   		
+
+	            
+				html.push("<div id=index>");
+            	            
+				
+                html.push(index,":",d,"<br/>");
+				
+          
+				html.push("</div>");
+            });
+               html.push("</div>");
+           });
+			
+			html.push("</div>");
+
+            
+            
+
+            $("#391").append(html.join(''));
+		}
+					
+     
+		
+		}); 
+        
+
+	});
+	
+
+
+
+
+	$("#write_comment").click(function(){
+
+
+	var uusername=getCookie("username");
+	var ppassword=getCookie("password");
+	var uuid;
+	var flag=0;
+	//var bbid=1;
+
+	
+
+	$.ajaxSetup({ cache: false ,async:false });
+	var str="http://api.fanqiechaodan.info/isUser/?username=";
+	str=str+uusername+"&password="+ppassword;
+	str+="&format=json";
+	
+
+
+	
+
+	
+	
+
+
+	$.ajax({ 
+		type:'GET',
+		url:str,
+	
+		
+		//dataType:"json;charset=utf-8",
+		
+
+		beforeSend:function (e) {
+		
+		
+		
+		
+		e.setRequestHeader('Authorization', make_base_auth(uusername, ppassword));
+		
+		
+		
+		} ,
+
+		success:function(data){
+			
+			
+			
+				  
+		
+			
+		   	$.each(data,function(index,d){
+		   		if (index=="id") 
+				{
+				uuid=d
+				//alert(uuid)
+				}
+            });
+
+
+			
+			
+			
+
+		},
+
+
+		
+			error:function(XMLHttpRequest, textStatus, errorThrown)
+			{  
+			alert(XMLHttpRequest.readyState + XMLHttpRequest.status + XMLHttpRequest.responseText);
+		     }
+		
+					
+     
+		
+	});
+
+
+		
+	var content=$("#write_comment2").val();
+		
+
+	//function myajax(){ 
+	//var obj=jsonData();
+	//var dataObject={"uid":uuid,
+	//	"bid":bbid,"content":content};
+	var dataObject={"content":content};
+
+	//var dataObject = {};
+
+	var str="http://api.fanqiechaodan.info/business/";
+	str=str+bbid+"/comments";
+		
+	$.ajax({ 
+	type:'PUT', 
+	url:str,//"http://api.fanqiechaodan.info/users/",
+	data:JSON.stringify(dataObject),//jsonData(),//可以直接加一个函数名。 
+	contentType:"application/json;text/html;charset=utf-8",//"application/json",//dataType:'json', 
+	error:function(XMLHttpRequest, textStatus, errorThrown){  
+        alert(XMLHttpRequest.readyState + XMLHttpRequest.status + XMLHttpRequest.responseText);  
+    },
+	//beforeSend:beforecall,
+	beforeSend:function (e) {
+		
+		
+		
+		
+		e.setRequestHeader('Authorization', make_base_auth(uusername, ppassword));
+		
+		
+		
+		},
+		
+	success:function(result){//callback
+				
+	           alert("添加评论成功！");
+	}
+
+	}); 
+
+	});
+
+
+
+
+
+})
+
+</script> 
+</head> 
+<body onLoad="checkCookie()"> 
+
+
+<button id="check_comment" type="button">查看评论</button>
+<button id="write_comment" type="button">添加评论</button>    
+<input type=text value="请添加评论" id=write_comment2>
+  
+<div id="391"></div>
+
+
+
+
+   
+
+</body> 
+</html>

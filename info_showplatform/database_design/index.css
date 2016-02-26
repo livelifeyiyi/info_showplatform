@@ -1,0 +1,13 @@
+/* CSS Document */
+	#content .index_page{height:480px; position:relative; width:960px; margin:0 auto;}
+	#content .index_page1{height:480px; position:relative; width:980px; margin:0 auto; background:url(picture/main_bj_xin2.png) no-repeat;}
+		.index_page1 .dream_icon ,.index_page1 .read_icon{display:block;position:absolute;text-indent:-9999px;}
+		.index_page1 .dream_icon{width:193px;height:199px;background:url(picture/dream_icon.gif) no-repeat;top:5px;left:-70px;}
+		.index_page1 .read_icon{width:155px;height:64px;background:url(picture/read_icon.png) no-repeat;top:35px;right:115px;}
+		
+	#content .index_page a.go-office-btn{ width:247px; height:336px; background:url(picture/index.png) 0 0 no-repeat; left:36px; top:80px; }
+		#content .index_page a.go-office-btn:hover{background-position:-500px 0;}
+	#content .index_page a.go-life-hub-btn{ width:247px; height:247px; background:url(picture/index.png) 0 -400px no-repeat; left:362px; top:36px; }
+		#content .index_page a.go-life-hub-btn:hover{background-position:-500px -400px;}
+	#content .index_page a.go-apartment-btn{ width:247px; height:336px; background:url(picture/index.png) 0 -700px no-repeat; right:48px; top:80px; }
+		#content .index_page a.go-apartment-btn:hover{background-position:-500px -700px;}

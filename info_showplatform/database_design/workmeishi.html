@@ -1,0 +1,490 @@
+
+<!DOCTYPE html>
+<html class='' lang='en' xml:lang='en'>
+<!--
+     GGGGGGGGG     GGGGGGGGG
+    GGGGGGGGGGG   GGGGGGGGGGG
+   GGG       GGG GGG       GGG       Hello, you code inspecting scoundrel, you.
+  GGG         GGGGG         GGG
+ GGG           GGG           GGG     Like our site? Think you can do better?
+ GGG           GGG           GGG     http://www.infinum.co/careers
+  GGG         GGGGG         GGG
+   GGG       GGG GGG       GGG       Let's talk. Infinum
+    GGGGGGGGGGG   GGGGGGGGGGG
+     GGGGGGGGG     GGGGGGGGG
+-->
+
+<head><script type="text/javascript">var NREUMQ=NREUMQ||[];NREUMQ.push(["mark","firstbyte",new Date().getTime()]);</script>
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+<script>
+  function createCookie(name,value,days) {
+    if (days) {
+      var date = new Date();
+      date.setTime(date.getTime()+(days*24*60*60*1000));
+      var expires = "; expires="+date.toGMTString();
+    }
+    else var expires = "";
+    document.cookie = name+"="+value+expires+"; path=/";
+  }
+  
+  function readCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+      var c = ca[i];
+      while (c.charAt(0)==' ') c = c.substring(1,c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+  }
+  
+  if(readCookie("width") == null){
+    createCookie("width", screen.width)
+    createCookie("devicePixelRatio", window.devicePixelRatio)
+    //window.location.reload()
+  }
+  
+  // if(readCookie("webP") == null){
+  //   var WebP=new Image()
+  //   WebP.onload=WebP.onerror=function(){
+  //     if(WebP.height == 2){
+  //       createCookie("webP", true)
+  //     }else{
+  //       createCookie("webP", false)
+  //     }
+  //     window.location.reload()
+  //   }
+  //   WebP.src='data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA'
+  // }
+</script>
+<title>meishidianpu</title>
+<!--<meta content="Sail in Croatia is an app for users who spend their summer vacation sailing in the Adriatic sea. This native iPhone app features everything a would-be sailor needs." name="description" />
+<meta content="Sail in Croatia by Infinum" property="og:title" />
+<meta content="Infinum" property="og:site_name" />
+<meta content="website" property="og:type" />
+<meta content="http://www.infinum.co/case/sail-in-croatia" property="og:url" />
+<meta content="http://s3.amazonaws.com/infinum.web.production/projects/image_squares/000/000/035/original/square.png?1384251625" property="og:image" />
+<meta content='http://infinum.co/assets/logo_pic.png' itemprop='image'>-->
+<meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+<!--<link href='/favicon.ico' rel='shortcut icon'>
+<link href='http://www.infinum.co/assets/icon/apple-touch-57x57-8e8c902f1254834246695e64455582b2.png' rel='apple-touch-icon'>
+<link href='http://www.infinum.co/assets/icon/apple-touch-72x72-41288c28298e92056f9336c4dbe0509c.png' rel='apple-touch-icon' sizes='72x72'>
+<link href='http://www.infinum.co/assets/icon/apple-touch-114x114-fdc776d33bd703e7329958d3d8b9b771.png' rel='apple-touch-icon' sizes='114x114'>
+<link href='http://www.infinum.co/assets/icon/apple-touch-144x144-4407f9c90a2482bf3d26a0f1ddbfde75.png' rel='apple-touch-icon' sizes='144x144'>
+<meta content='width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no' name='viewport'>-->
+<link href="application-d5b606ece99a03dd029a102cba4a0e4f.css" media="all" rel="stylesheet" />
+<script src="application-ca214b4dc12f42a5d7b5a0cfa9a01499.js"></script>
+<!--[if lt IE 9]>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<script src="//www.infinum.co/assets/vendor/respond.src-7427fd322b805bab8739116b29478059.js"></script>
+<![endif]-->
+<!--
+<meta content="authenticity_token" name="csrf-param" />
+<meta content="ba+k78rnkhZiFDmczoj9vQjS8VqmcRQPzNSZplgIfuU=" name="csrf-token" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8;application/json" /> 
+.row img{float:left;}-->
+<style type="text/css"> 
+.container > .row{background-image: url(./picture/forums_top3_bg.png)!important;background-repeat:no-repeat!important;}
+
+h1{text-align: center}
+.show{ display:block;} 
+.hide{ display:none;} 
+</style> 
+<script  src="1.8.3_jquery.min.js"></script> 
+<script  src="json2.js"></script> 
+
+<script type="text/javascript"> 
+
+//这个方法把ajax方法封装一下，方便调用。 
+
+function find(list1)
+{
+  for (each in list1)
+  {
+    if (each=="types")
+    {
+      if (list1[each]==0)
+        return 1
+      else 
+        return 0
+    }
+
+
+  }
+}
+function findid(list2)
+{
+  var temp;
+  for(each in list2)
+  {
+    if(each=="id")
+    {
+      temp=list2[each];
+    }
+  }
+  return temp;
+
+}
+$(document).ready(function(){
+
+
+  //$("#register").click(function(){
+  //function myajax(){ 
+  //var obj=jsonData();
+  $.ajaxSetup({ cache: false });
+  var str="http://api.fanqiechaodan.info/businesses/";
+  
+        
+
+    $.getJSON(str, function(data){ 
+        var html = [];
+        var html1 = [];
+        var temp;
+        
+           
+       html.push("<div>");
+       var flag=0;
+       var fflag=1;
+
+            /* loop through array */
+			
+			
+			want_to_divide = 4;
+			length_size =  0;  
+            $.each(data, function(index, d){
+              flag=find(data[index]);
+                if (flag==0){
+                  
+                  return ;
+                }	
+				length_size++;				
+			});			
+
+			each_size = length_size/want_to_divide
+			
+			html1.push(
+			  '<ul class="nav nav-tabs">'
+			);	
+			
+			for(var i=0;i<want_to_divide;i++)
+			{
+				if(i==0)
+				{
+					html1.push('<li class="active"><a class="active" href="#tab'+i+'" data-toggle="tab">页面 '+i+'</a></li>');
+				}
+				else
+				{
+					html1.push('<li><a href="#tab'+i+'" data-toggle="tab">页面 '+i+'</a></li>');
+				}
+				
+			}
+			
+			html1.push('</ul>');
+      html.push('<div class="tab-content">');
+			total_size_iterator = 0;
+            $.each(data, function(index, d){
+				
+				flag=find(data[index]);
+                if (flag==0){
+                  
+                  return ;
+                }
+              temp=findid(data[index]);  
+			  
+			  if(total_size_iterator%each_size==0)
+			  {				
+				if(total_size_iterator==0)
+				{
+					html.push('<div class="tab-pane active" id="tab'+total_size_iterator/each_size+'">')
+				}
+				else
+				{
+					 html.push('</div>')
+					html.push('<div class="tab-pane" id="tab'+total_size_iterator/each_size+'">')
+				}
+					
+				
+			  
+				 
+			  }
+			  
+			  
+			  total_size_iterator++;
+			  
+              html.push("<div class=\"container\">");
+              html.push("<div class=\"row\">","<br>");
+			  
+			  
+
+			  //data
+			  
+              $.each(data[index],function(index2,d2){
+                
+
+                
+                
+                if  (index2=="url")
+                {
+                  
+                  html.push("<a href='","./meishidian");
+                  html.push(temp);
+                  html.push("detail.html","''>");
+                  html.push("店铺");
+                  html.push(temp);
+                    html.push("详细信息");
+                  html.push("</a>","<br/>");
+                  return;
+                  
+                
+
+                      
+              }//||(index=="id"))
+            
+              if ( (index2=="types")||(index2=="address")||(index2=="info") )
+                  return;
+              if (index2=="id")
+              {
+                //temp=d2;
+                return;
+              }
+              if (index2=="name")
+              {
+                html.push("店铺名称");
+                html.push(":",d2,"<br/>");
+
+              }
+              if (index2=="logo")
+              {
+                var d2="http://api.fanqiechaodan.info"+d2;
+                //html.push("&nbsp","&nbsp","&nbsp","&nbsp");
+                html.push("<img src=",d2,">","<br/>");
+                return;
+                
+                
+              }
+
+              html.push("<div id=",id,">");
+              
+                          
+        
+                 // html.push(index2,":",d2,"<br/>");
+        
+          
+				html.push("</div>");
+              
+                  
+                
+        
+              });
+              html.push("</div>","</div>","<br/>");
+      
+            });
+      
+			html.push("</div>");
+
+            //alert("success occurred!");
+            
+
+            $("#391").append(html.join(''));//.css("background-color", "white");
+            $("#392").append(html1.join(''));
+        }).error(function(jqXHR, textStatus, errorThrown){ /* assign handler */
+            /* alert(jqXHR.responseText) */
+    alert("error occurred!");});
+  
+  
+});
+
+</script> 
+
+
+
+
+
+</head>
+<body>
+
+
+<div id='fb-root'></div>
+<div class='hidden-phone nav-fixed'>
+<nav class="menu clearfix"><div class="nav-link-left products"><a class="text-left" href="./home.html">Home</a></div><div class="nav-link-left selected simple-navigation-active-leaf work"><a class="text-left selected simple-navigation-active-leaf" href="./work.html">Work</a></div><div class="nav-link-left services"><a class="text-left" href="./services.html">Services</a></div><div class="nav-link-root"><a class="root" href="/"></a></div><div class="nav-link-right about"><a class="text-right" href="./about.html">About</a></div><div class="nav-link-right blog"><a class="text-right" href="http://blog.fanqiechaodan.info/" target="_blank">Blog</a></div><div class="nav-link-right contact"><a class="text-right" href="./contact.html">Contact</a></div></nav>
+</div>
+<div class='menu-dongle hidden-phone'></div>
+<nav class='clearfix phone-menu visible-phone'>
+<div class='menu-slidedown'>
+<div class='row'>
+<div class='outer-nav touchable' data-url='/'>
+<div class='nav-link products'><a href="./home.html">Home</a></div>
+</div>
+<div class='outer-nav touchable' data-url='/work/all'>
+<div class='nav-link work'><a href="./work.html">Work</a></div>
+</div>
+<div class='outer-nav touchable' data-url='/services'>
+<div class='nav-link services'><a href="./services.html">Services</a></div>
+</div>
+</div>
+<div class='row'>
+<div class='outer-nav touchable' data-url='/about'>
+<div class='nav-link about'><a href="./about.html">About</a></div>
+</div>
+<div class='outer-nav touchable' data-url='/the-capsized-eight'>
+<div class='nav-link blog'><a href="http://blog.fanqiechaodan.info/" target="_blank">Blog</a></div>
+</div>
+<div class='outer-nav touchable' data-url='/contact'>
+<div class='nav-link contact'><a href="./contact.html">Contact</a></div>
+</div>
+</div>
+</div>
+<div class='menu-bar'>
+<div class='menu-button'></div>
+<div class='logo'>
+<a class="root" href="/"><img alt="Menu logo simple" src="http://www.infinum.co/assets/menu-logo-simple-e27680ae5831d117f461d2ff53f4874a.png" />
+</a></div>
+</div>
+</nav>
+
+<div class='content'><div class='project-show'>
+<div class='section1 after-black'>
+<div class='container'>
+      <a href="./login.html" style="float:right"><button type="button"><b>登录速冻mall</b></button></a>
+
+<div class='header'>
+<div class='span9'>
+<div class='hidden-phone breadcrumbs'>
+
+</div>
+<h2 class='page-title' style="color: #9400D3;"><b>美食</b></h2>
+</div>
+
+</div>
+</div>
+</div>
+<div class='section1'>
+<div class='fish'>
+<div class='back' style='background-image: url(./picture/6.png)'>
+<div class='overlay'>
+<div class='landscape mask'>
+<div class='container'>
+</div>
+<div class='image'><img alt=" landscape" src="./picture/xiao1.png" /></div>
+</div>
+</div>
+</div>
+</div>
+<!--
+<div class='container'>
+<div class='row about-project' >
+<h2>About Sail in Croatia</h2>
+
+<div class='summary1 span6'>
+<p>Sail in Croatia is an app for users who spend their summer vacation sailing in the Adriatic sea. This native iPhone app features everything a would-be sailor needs.</p>
+<p><span style="background-color: rgb(244, 244, 244);">The application features weather conditions and forecasts based on user’s current location, including wind speed.&nbsp;</span></p>
+</div>
+<div class='summary2 span6'>
+<p>You can also find nearby restaurants, bays, marinas and gas stations.<br></p>
+<p>Browse among different routes, which include descriptions and photos of some of the most beautiful tourist attractions and locations.<br></p>
+</div>
+</div>
+
+</div>
+-->
+
+<hr>
+<div class='segments-header container'>
+<h2 style="color: #9400D3; "><b>美食店铺信息<br></b></h2>
+</div><!--
+<hr>
+<div class='container'>
+<div class='row' style='background-image: url(./picture/forums_top3_bg.png) ;background-repeat:repeat-y;'>
+<br><br>
+ <div id="id"></div>
+<h1><div id="391"></div></h1>
+</div>
+</div>
+ -->
+<hr>
+<div class='segments-header container'>
+<h1><div id="392"></div></h1>
+</div>
+
+<div class='container'>
+<div class='row' style='background-image: url(./picture/forums_top3_bg.png) ;background-repeat:repeat-y;'>
+<div id="id"></div>
+<h1><div id="391"></div></h1>
+</div>
+</div>
+<!--
+<hr>
+<div class='container'>
+<div class='row'  style='background-image: url(./picture/forums_top3_bg.png) ;background-repeat:no-repeat;'>
+<div class='segment offset1 span10'>
+<br>
+<h3>Sailing routes with additional information</h3>
+<p>Sailing trips provide different routes, and you can find out more information about each of them. You will be able to see the exact route on the map from point A to point B, with additional information like descriptions of different stop points and beautiful photos of selected destinations.<br><br><br><br></p>
+</div>
+</div>
+</div>
+
+<hr>
+<div class='container'>
+<div class='row' style='background-image: url(./picture/forums_top3_bg.png) ;background-repeat:no-repeat;'>
+<div class='segment offset1 span10'>
+<br>
+<h3>Real-time support</h3>
+<p>The Support feature is actually like a chat feature. You can literally write a message to the Croatia Yacht Club operator (agent), asking for any kind of sailing advice or recommendation, and they will respond to you at the spot. You can even ask them to book you a table at the nearest restaurant.<br><br><br><br></p>
+</div>
+</div>
+</div>
+
+<hr>
+<div class='container'>
+<div class='row' style='background-image: url(./picture/forums_top3_bg.png) ;background-repeat:no-repeat;'>
+<div class='segment offset1 span10'>
+<br>
+<h3>Real-time support</h3>
+<p>The Support feature is actually like a chat feature. You can literally write a message to the Croatia Yacht Club operator (agent), asking for any kind of sailing advice or recommendation, and they will respond to you at the spot. You can even ask them to book you a table at the nearest restaurant.<br><br><br><br></p>
+</div>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+-->
+<footer>
+
+
+
+<div class='links-section section1'>
+<div class='container'>
+
+</div>
+<hr>
+<div class='container'>
+<div class='copyright'>
+<big>Established 2013.12 in <a href="http://www.tongji.edu.cn/" title="Welcome to tongji!">tju</a> by sudo.</big>
+</div>
+</div>
+</div>
+<div class='section2 visible-phone'>
+<div class='container'>
+<div class='back-to-top'>
+<a href="#">Back to top</a>
+</div>
+</div>
+</div>
+</footer>
+
+
+<script type="text/javascript">if (typeof NREUMQ !== "undefined") { if (!NREUMQ.f) { NREUMQ.f=function() {
+NREUMQ.push(["load",new Date().getTime()]);
+var e=document.createElement("script");
+e.type="text/javascript";
+e.src=(("http:"===document.location.protocol)?"http:":"https:") + "//" +
+  "js-agent.newrelic.com/nr-100.js";
+document.body.appendChild(e);
+if(NREUMQ.a)NREUMQ.a();
+};
+NREUMQ.a=window.onload;window.onload=NREUMQ.f;
+};
+NREUMQ.push(["nrfj","beacon-6.newrelic.com","15889326c6","1900527","d1gPRUFWVQ8AFxlIQFtdBFJHShYQDQpB",0,128,new Date().getTime(),"","","","",""]);}</script></body>
+</html>
